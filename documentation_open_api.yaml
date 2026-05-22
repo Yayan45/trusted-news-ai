@@ -1,0 +1,129 @@
+openapi: 3.0.0
+info:
+  title: Detektor Hoaks API (Capstone Project)
+  description: Dokumentasi API Back-End untuk aplikasi Detektor Hoaks. Digunakan oleh Front-End untuk memeriksa indikasi hoaks pada judul berita Masih Dummy dulu kita masih Nunggu endpoint dari AInya.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Local Development Server
+paths:
+  /api/check:
+    post:
+      summary: Memeriksa indikasi hoaks pada judul berita
+      description: Endpoint ini menerima headline berita dan mengembalikan hasil analisis AI beserta daftar artikel rujukan.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - headline
+              properties:
+                headline:
+                  type: string
+                  description: Judul berita yang ingin dicek.
+                  example: "Ijazah Jokowi Palsu"
+      responses:
+        "200":
+          description: Berhasil melakukan analisis dan mengembalikan data lengkap.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  data:
+                    type: object
+                    properties:
+                      headline:
+                        type: string
+                        example: "Ijazah Jokowi Palsu"
+                      skor_hoax:
+                        type: integer
+                        description: Presentase probabilitas hoaks (0-100).
+                        example: 20
+                      verdict:
+                        type: string
+                        example: "KEMUNGKINAN BENAR"
+                      keyakinan:
+                        type: string
+                        example: "tinggi"
+                      komponen_analisis:
+                        type: object
+                        properties:
+                          rasio_konfirmasi:
+                            type: object
+                            properties:
+                              membantah:
+                                type: integer
+                                example: 10
+                              mendukung:
+                                type: integer
+                                example: 2
+                          cek_fakta_resmi:
+                            type: string
+                            example: "Tidak ada cek fakta resmi ditemukan"
+                          analisis_semantik:
+                            type: array
+                            items:
+                              type: string
+                            example:
+                              ["Provokatif", "Clickbait", "Narasi Berulang"]
+                          jangkauan_penelusuran:
+                            type: integer
+                            example: 14
+                      berita_terkait:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            judul:
+                              type: string
+                              example: "Google Berita 6"
+                            sumber:
+                              type: string
+                              example: "Kompas"
+                            similarity:
+                              type: number
+                              format: float
+                              description: Tingkat kemiripan artikel dengan query.
+                              example: 91.21
+                            status:
+                              type: string
+                              example: "Mendukung"
+                            url:
+                              type: string
+                              format: uri
+                              example: "https://kompas.com"
+        "400":
+          description: Bad Request (Input tidak valid, misal headline kosong)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Headline tidak boleh kosong!"
+        "500":
+          description: Internal Server Error (Kesalahan server BE atau AI down)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Terjadi kesalahan pada server BE"
