@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Detektor Hoaks API (Capstone Project)
-  description: Dokumentasi API Back-End untuk aplikasi Detektor Hoaks. Digunakan oleh Front-End untuk memeriksa indikasi hoaks pada judul berita Masih Dummy dulu kita masih Nunggu endpoint dari AInya.
+  description: Dokumentasi API Back-End untuk aplikasi Detektor Hoaks. API ini bertindak sebagai API Gateway yang mengintegrasikan aplikasi Front-End dengan Microservice AI (Python NLP).
   version: 1.0.0
 servers:
   - url: http://localhost:3000
@@ -10,7 +10,7 @@ paths:
   /api/check:
     post:
       summary: Memeriksa indikasi hoaks pada judul berita
-      description: Endpoint ini menerima headline berita dan mengembalikan hasil analisis AI beserta daftar artikel rujukan.
+      description: Endpoint ini menerima headline berita, meneruskannya ke Microservice AI, dan mengembalikan hasil analisis probabilitas hoaks beserta artikel rujukan yang valid.
       requestBody:
         required: true
         content:
@@ -22,11 +22,11 @@ paths:
               properties:
                 headline:
                   type: string
-                  description: Judul berita yang ingin dicek.
+                  description: Judul berita yang ingin diperiksa indikasi hoaksnya.
                   example: "Ijazah Jokowi Palsu"
       responses:
         "200":
-          description: Berhasil melakukan analisis dan mengembalikan data lengkap.
+          description: Berhasil melakukan analisis komprehensif dan mengembalikan data dari model AI.
           content:
             application/json:
               schema:
@@ -38,19 +38,18 @@ paths:
                   data:
                     type: object
                     properties:
-                      headline:
-                        type: string
-                        example: "Ijazah Jokowi Palsu"
                       skor_hoax:
                         type: integer
-                        description: Presentase probabilitas hoaks (0-100).
-                        example: 20
+                        description: Persentase probabilitas hoaks global (0-100).
+                        example: 53
                       verdict:
                         type: string
-                        example: "KEMUNGKINAN BENAR"
+                        description: Keputusan akhir dari analisis model AI.
+                        example: "TIDAK PASTI (PERLU VERIFIKASI)"
                       keyakinan:
                         type: string
-                        example: "tinggi"
+                        description: Tingkat keyakinan model terhadap verdict.
+                        example: "rendah"
                       komponen_analisis:
                         type: object
                         properties:
@@ -59,10 +58,10 @@ paths:
                             properties:
                               membantah:
                                 type: integer
-                                example: 10
+                                example: 4
                               mendukung:
                                 type: integer
-                                example: 2
+                                example: 0
                           cek_fakta_resmi:
                             type: string
                             example: "Tidak ada cek fakta resmi ditemukan"
@@ -70,11 +69,10 @@ paths:
                             type: array
                             items:
                               type: string
-                            example:
-                              ["Provokatif", "Clickbait", "Narasi Berulang"]
+                            example: ["Narasi Berulang", "Mayoritas Membantah"]
                           jangkauan_penelusuran:
                             type: integer
-                            example: 14
+                            example: 5
                       berita_terkait:
                         type: array
                         items:
@@ -85,24 +83,34 @@ paths:
                               example: 1
                             judul:
                               type: string
-                              example: "Google Berita 6"
+                              example: "Polisi Limpahkan Lagi Berkas Kasus Ijazah Jokowi ke Kejaksaan - detikNews"
                             sumber:
                               type: string
-                              example: "Kompas"
-                            similarity:
-                              type: number
-                              format: float
-                              description: Tingkat kemiripan artikel dengan query.
-                              example: 91.21
-                            status:
-                              type: string
-                              example: "Mendukung"
+                              example: "detikNews"
                             url:
                               type: string
                               format: uri
-                              example: "https://kompas.com"
+                              example: "https://news.google.com/rss/articles/..."
+                            similarity:
+                              type: number
+                              format: float
+                              description: Tingkat kemiripan artikel rujukan dengan judul berita utama.
+                              example: 23.77
+                            status:
+                              type: string
+                              example: "Membantah"
+                            clickbait:
+                              type: string
+                              example: "no"
+                            skor_hoax_artikel:
+                              type: number
+                              format: float
+                              example: 21.22
+                            trusted_source:
+                              type: boolean
+                              example: false
         "400":
-          description: Bad Request (Input tidak valid, misal headline kosong)
+          description: Bad Request (Input tidak valid atau headline kosong)
           content:
             application/json:
               schema:
@@ -115,7 +123,7 @@ paths:
                     type: string
                     example: "Headline tidak boleh kosong!"
         "500":
-          description: Internal Server Error (Kesalahan server BE atau AI down)
+          description: Internal Server Error (Server AI mati atau jaringan terputus)
           content:
             application/json:
               schema:
@@ -126,4 +134,4 @@ paths:
                     example: "error"
                   message:
                     type: string
-                    example: "Terjadi kesalahan pada server BE"
+                    example: "Server AI sedang tidak aktif, Ngrok mati, atau terputus."
