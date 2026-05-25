@@ -7,16 +7,19 @@ function SearchAnimation() {
         {/* Lingkaran */}
         <div
           className="
-          w-28
-          h-28
-          rounded-full
-          border-4
-          border-blue-200
-          flex
-          items-center
-          justify-center
-          animate-pulse
-        "
+            w-28
+            h-28
+            rounded-full
+            border-4
+            flex
+            items-center
+            justify-center
+            animate-pulse
+          "
+          style={{
+            borderColor: "rgba(59,130,246,0.35)",
+            backgroundColor: "var(--bg-secondary)",
+          }}
         >
           <FaSearch className="text-4xl text-blue-500" />
         </div>
@@ -24,13 +27,15 @@ function SearchAnimation() {
         {/* Ping Effect */}
         <div
           className="
-          absolute
-          inset-0
-          rounded-full
-          border-4
-          border-blue-300
-          animate-ping
-        "
+            absolute
+            inset-0
+            rounded-full
+            border-4
+            animate-ping
+          "
+          style={{
+            borderColor: "rgba(59,130,246,0.45)",
+          }}
         />
       </div>
     </div>

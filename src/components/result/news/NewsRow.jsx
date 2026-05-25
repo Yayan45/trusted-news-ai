@@ -4,7 +4,13 @@ import StatusBadge from "./StatusBadge";
 
 function NewsRow({ item, index }) {
   return (
-    <tr className="border-b border-gray-200">
+    <tr
+      className="border-b"
+      style={{
+        borderColor: "var(--border-color)",
+        color: "var(--text-primary)",
+      }}
+    >
       {/* NUMBER */}
       <td className="px-4 py-5 text-sm">{index + 1}.</td>
 
@@ -12,7 +18,14 @@ function NewsRow({ item, index }) {
       <td className="px-4 py-5 text-sm">{item.title}</td>
 
       {/* SOURCE */}
-      <td className="px-4 py-5 text-sm">{item.source}</td>
+      <td
+        className="px-4 py-5 text-sm"
+        style={{
+          color: "var(--text-secondary)",
+        }}
+      >
+        {item.source}
+      </td>
 
       {/* SIMILARITY */}
       <td className="px-4 py-5 text-sm font-medium">{item.similarity}%</td>

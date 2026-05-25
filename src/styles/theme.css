@@ -1,0 +1,74 @@
+:root {
+  /* LIGHT MODE */
+
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+
+  --border-color: #e5e7eb;
+
+  --card-bg: #ffffff;
+
+  --primary-color: #2563eb;
+
+  --success-color: #16a34a;
+  --danger-color: #dc2626;
+}
+
+[data-theme="dark"] {
+  /* DARK MODE */
+
+  --bg-primary: #020617;
+  --bg-secondary: #0f172a;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+
+  --border-color: #334155;
+
+  --card-bg: #0f172a;
+
+  --primary-color: #3b82f6;
+
+  --success-color: #22c55e;
+  --danger-color: #ef4444;
+}
+
+/* GLOBAL */
+
+* {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.theme-toggle {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+
+  border: 1px solid var(--border-color);
+
+  padding: 10px 16px;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--primary-color);
+}

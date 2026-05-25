@@ -4,14 +4,39 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 function SkeletonCard() {
   return (
-    <div className="bg-white shadow rounded-2xl p-5 mt-5">
-      <Skeleton height={40} />
+    <div
+      className="shadow rounded-2xl p-5 mt-5 border"
+      style={{
+        backgroundColor: "var(--card-bg)",
+        borderColor: "var(--border-color)",
+      }}
+    >
+      <Skeleton
+        height={40}
+        baseColor="var(--bg-secondary)"
+        highlightColor="rgba(255,255,255,0.06)"
+      />
 
-      <Skeleton height={20} className="mt-4" />
+      <Skeleton
+        height={20}
+        className="mt-4"
+        baseColor="var(--bg-secondary)"
+        highlightColor="rgba(255,255,255,0.06)"
+      />
 
-      <Skeleton height={20} className="mt-2" />
+      <Skeleton
+        height={20}
+        className="mt-2"
+        baseColor="var(--bg-secondary)"
+        highlightColor="rgba(255,255,255,0.06)"
+      />
 
-      <Skeleton height={200} className="mt-6" />
+      <Skeleton
+        height={200}
+        className="mt-6"
+        baseColor="var(--bg-secondary)"
+        highlightColor="rgba(255,255,255,0.06)"
+      />
     </div>
   );
 }

@@ -1,3 +1,5 @@
+import "../../../styles/theme.css";
+
 const interpretations = [
   {
     color: "bg-red-500",
@@ -14,7 +16,7 @@ const interpretations = [
   {
     color: "bg-yellow-400",
     range: "40 - 54%",
-    text: "Tidak Pasti(Perlu Verifikasi)",
+    text: "Tidak Pasti (Perlu Verifikasi)",
   },
 
   {
@@ -32,7 +34,12 @@ const interpretations = [
 
 function InterpretationLegend() {
   return (
-    <div className="pl-1">
+    <div
+      className="pl-1"
+      style={{
+        color: "var(--text-primary)",
+      }}
+    >
       <h2 className="text-sm font-bold mb-4">Skala Interpretasi Skor Hoax</h2>
 
       <div className="space-y-3">
@@ -44,17 +51,31 @@ function InterpretationLegend() {
                 w-3
                 h-3
                 rounded-sm
-                mt-0.75
+                mt-0.5
                 shrink-0
                 ${item.color}
               `}
             />
 
             {/* RANGE */}
-            <p className="w-17.5 text-xs font-medium shrink-0">{item.range}</p>
+            <p
+              className="w-20 text-xs font-medium shrink-0"
+              style={{
+                color: "var(--text-primary)",
+              }}
+            >
+              {item.range}
+            </p>
 
             {/* TEXT */}
-            <p className="text-xs text-gray-700">{item.text}</p>
+            <p
+              className="text-xs"
+              style={{
+                color: "var(--text-secondary)",
+              }}
+            >
+              {item.text}
+            </p>
           </div>
         ))}
       </div>

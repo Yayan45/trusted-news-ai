@@ -16,7 +16,12 @@ function Pagination({ total, currentPage, totalPages, setCurrentPage }) {
   return (
     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mt-5">
       {/* INFO */}
-      <p className="text-sm text-gray-500">
+      <p
+        className="text-sm"
+        style={{
+          color: "var(--text-secondary)",
+        }}
+      >
         Menampilkan {(currentPage - 1) * 5 + 1} -
         {Math.min(currentPage * 5, total)} dari {total} berita
       </p>
@@ -31,12 +36,15 @@ function Pagination({ total, currentPage, totalPages, setCurrentPage }) {
             w-9
             h-9
             rounded-md
-            bg-gray-200
             flex
             items-center
             justify-center
             disabled:opacity-50
           "
+          style={{
+            backgroundColor: "var(--bg-secondary)",
+            color: "var(--text-primary)",
+          }}
         >
           <FaChevronLeft />
         </button>
@@ -47,10 +55,12 @@ function Pagination({ total, currentPage, totalPages, setCurrentPage }) {
             w-9
             h-9
             rounded-md
-            bg-blue-500
             text-white
             font-medium
           "
+          style={{
+            backgroundColor: "var(--primary-color)",
+          }}
         >
           {currentPage}
         </button>
@@ -63,12 +73,15 @@ function Pagination({ total, currentPage, totalPages, setCurrentPage }) {
             w-9
             h-9
             rounded-md
-            bg-gray-200
             flex
             items-center
             justify-center
             disabled:opacity-50
           "
+          style={{
+            backgroundColor: "var(--bg-secondary)",
+            color: "var(--text-primary)",
+          }}
         >
           <FaChevronRight />
         </button>

@@ -1,21 +1,15 @@
 function ScoreGauge({ score }) {
-  // =========================
-  // DETERMINE COLOR
-  // =========================
   const getColor = () => {
-    if (score >= 75) return "#ef4444"; // red
-    if (score >= 55) return "#f97316"; // orange
-    if (score >= 40) return "#eab308"; // yellow
-    if (score >= 20) return "#3b82f6"; // blue
+    if (score >= 75) return "#ef4444";
+    if (score >= 55) return "#f97316";
+    if (score >= 40) return "#eab308";
+    if (score >= 20) return "#3b82f6";
 
-    return "#22c55e"; // green
+    return "#22c55e";
   };
 
   const color = getColor();
 
-  // =========================
-  // CONVERT SCORE TO ANGLE
-  // =========================
   const angle = (score / 100) * 270;
 
   return (
@@ -25,22 +19,21 @@ function ScoreGauge({ score }) {
         className="absolute inset-0 rounded-full"
         style={{
           background: `
-            conic-gradient(
-              from 135deg,
-              ${color} ${angle}deg,
-              #ececec ${angle}deg 270deg,
-              transparent 270deg
-            )
-          `,
+      conic-gradient(
+        from 135deg,
+        ${color} ${angle}deg,
+        var(--border-color) ${angle}deg 270deg,
+        transparent 270deg
+      )
+    `,
         }}
       />
 
-      {/* WHITE CENTER */}
+      {/* CENTER */}
       <div
         className="
           absolute
           inset-4
-          bg-white
           rounded-full
           flex
           flex-col
@@ -48,13 +41,16 @@ function ScoreGauge({ score }) {
           justify-center
           shadow-inner
         "
+        style={{
+          backgroundColor: "var(--card-bg)",
+          color: "var(--text-primary)",
+        }}
       >
         {/* SCORE */}
         <h1
           className="
             text-4xl
             font-bold
-            text-gray-800
             leading-none
             mb-2
           "
@@ -71,18 +67,27 @@ function ScoreGauge({ score }) {
         />
 
         {/* LABEL */}
-        <p className="text-gray-500 text-base">Skor Hoax</p>
+        <p
+          className="text-base"
+          style={{
+            color: "var(--text-secondary)",
+          }}
+        >
+          Skor Hoax
+        </p>
       </div>
 
-      {/* INNER SOFT BORDER */}
+      {/* INNER BORDER */}
       <div
         className="
           absolute
           inset-2
           rounded-full
           border-4
-          border-white/40
         "
+        style={{
+          borderColor: "rgba(255,255,255,0.08)",
+        }}
       />
     </div>
   );

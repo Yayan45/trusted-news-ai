@@ -13,7 +13,14 @@ function SemanticCard({ semanticTags }) {
   };
 
   return (
-    <div className="bg-white shadow rounded-2xl p-5">
+    <div
+      className="shadow rounded-2xl p-5 border"
+      style={{
+        backgroundColor: "var(--card-bg)",
+        borderColor: "var(--border-color)",
+        color: "var(--text-primary)",
+      }}
+    >
       <div className="flex items-start gap-4">
         {/* ICON */}
         <img
@@ -35,13 +42,13 @@ function SemanticCard({ semanticTags }) {
               <div
                 key={index}
                 className={`
-                    px-3
-                    py-1
-                    rounded-md
-                    text-sm
-                    font-medium
-                    ${getTagColor(index)}
-                  `}
+                  px-3
+                  py-1
+                  rounded-md
+                  text-sm
+                  font-medium
+                  ${getTagColor(index)}
+                `}
               >
                 {tag}
               </div>

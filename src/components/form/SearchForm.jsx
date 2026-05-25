@@ -40,13 +40,18 @@ function SearchForm({ onSearch }) {
   return (
     <div
       className="
-        bg-white
         shadow
         rounded-2xl
         p-4
         sm:p-6
         mt-5
+        border
       "
+      style={{
+        backgroundColor: "var(--card-bg)",
+        borderColor: "var(--border-color)",
+        color: "var(--text-primary)",
+      }}
     >
       {/* LABEL */}
       <label
@@ -55,6 +60,9 @@ function SearchForm({ onSearch }) {
           sm:text-base
           font-semibold
         "
+        style={{
+          color: "var(--text-primary)",
+        }}
       >
         Masukan Headline berita yang ingin dicek
       </label>

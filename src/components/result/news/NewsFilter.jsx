@@ -12,12 +12,18 @@ function NewsFilter({
     setCurrentPage(1);
   };
 
+  const defaultStyle = {
+    borderColor: "var(--border-color)",
+    backgroundColor: "var(--bg-secondary)",
+    color: "var(--text-secondary)",
+  };
+
   return (
     <div className="flex flex-wrap gap-3">
       {/* ALL */}
       <button
         onClick={() => handleFilter("Semua")}
-        className={`
+        className="
           px-5
           py-2
           rounded-lg
@@ -25,13 +31,16 @@ function NewsFilter({
           text-sm
           font-medium
           transition
-
-          ${
-            selectedFilter === "Semua"
-              ? "border-blue-200 bg-blue-50 text-blue-600"
-              : "border-gray-200 bg-white text-gray-500"
-          }
-        `}
+        "
+        style={
+          selectedFilter === "Semua"
+            ? {
+                borderColor: "#bfdbfe",
+                backgroundColor: "#eff6ff",
+                color: "#2563eb",
+              }
+            : defaultStyle
+        }
       >
         Semua ({total})
       </button>
@@ -39,7 +48,7 @@ function NewsFilter({
       {/* MEMBANTAH */}
       <button
         onClick={() => handleFilter("Membantah")}
-        className={`
+        className="
           px-5
           py-2
           rounded-lg
@@ -47,13 +56,16 @@ function NewsFilter({
           text-sm
           font-medium
           transition
-
-          ${
-            selectedFilter === "Membantah"
-              ? "border-red-200 bg-red-50 text-red-500"
-              : "border-gray-200 bg-white text-gray-500"
-          }
-        `}
+        "
+        style={
+          selectedFilter === "Membantah"
+            ? {
+                borderColor: "#fecaca",
+                backgroundColor: "#fef2f2",
+                color: "#ef4444",
+              }
+            : defaultStyle
+        }
       >
         Membantah ({membantahCount})
       </button>
@@ -61,7 +73,7 @@ function NewsFilter({
       {/* MENDUKUNG */}
       <button
         onClick={() => handleFilter("Mendukung")}
-        className={`
+        className="
           px-5
           py-2
           rounded-lg
@@ -69,13 +81,16 @@ function NewsFilter({
           text-sm
           font-medium
           transition
-
-          ${
-            selectedFilter === "Mendukung"
-              ? "border-green-200 bg-green-50 text-green-600"
-              : "border-gray-200 bg-white text-gray-500"
-          }
-        `}
+        "
+        style={
+          selectedFilter === "Mendukung"
+            ? {
+                borderColor: "#bbf7d0",
+                backgroundColor: "#f0fdf4",
+                color: "#16a34a",
+              }
+            : defaultStyle
+        }
       >
         Mendukung ({mendukungCount})
       </button>

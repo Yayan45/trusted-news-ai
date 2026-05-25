@@ -8,14 +8,26 @@ function StanceCard({ support, against }) {
   const againstPercentage = total > 0 ? (against / total) * 100 : 0;
 
   return (
-    <div className="bg-white shadow rounded-2xl p-5">
+    <div
+      className="shadow rounded-2xl p-5 border"
+      style={{
+        backgroundColor: "var(--card-bg)",
+        borderColor: "var(--border-color)",
+        color: "var(--text-primary)",
+      }}
+    >
       {/* TITLE */}
       <h3 className="font-bold text-lg mb-4">
         Rasio Konfirmasi - Media (Stance Bar)
       </h3>
 
       {/* BAR */}
-      <div className="w-full h-5 bg-gray-200 rounded-full overflow-hidden flex">
+      <div
+        className="w-full h-5 rounded-full overflow-hidden flex"
+        style={{
+          backgroundColor: "var(--border-color)",
+        }}
+      >
         {/* AGAINST */}
         <div
           className="
@@ -50,7 +62,14 @@ function StanceCard({ support, against }) {
           <p>{against} Membantah</p>
         </div>
 
-        <p>||</p>
+        <p
+          style={{
+            color: "var(--text-secondary)",
+          }}
+        >
+          ||
+        </p>
+
         {/* SUPPORT */}
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 bg-green-500 rounded-full" />

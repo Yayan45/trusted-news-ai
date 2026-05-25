@@ -1,14 +1,12 @@
 function ActionButton({
   children,
-  variant = "primary",
   type = "button",
+  variant = "primary",
   onClick,
 }) {
-  // VARIANT STYLE
   const variants = {
-    primary: "bg-blue-500 hover:bg-blue-600 text-white",
-
-    danger: "bg-red-500 hover:bg-red-600 text-white",
+    primary: "bg-blue-500 hover:bg-blue-600",
+    danger: "bg-red-500 hover:bg-red-600",
   };
 
   return (
@@ -16,15 +14,30 @@ function ActionButton({
       type={type}
       onClick={onClick}
       className={`
-        px-6
-        py-3
-        rounded-xl
-        font-medium
-        transition
-        duration-200
-        shadow-sm
-        whitespace-nowrap
         ${variants[variant]}
+
+        text-white
+        font-medium
+
+        rounded-xl
+
+        px-5
+        py-2.5
+
+        sm:px-6
+        sm:py-3
+
+        transition-all
+        duration-200
+
+        active:scale-[0.98]
+
+        flex
+        items-center
+        justify-center
+
+        w-full
+        lg:w-auto
       `}
     >
       {children}

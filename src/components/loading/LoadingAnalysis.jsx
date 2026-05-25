@@ -4,14 +4,26 @@ import SourceItem from "./SourceItem";
 
 function LoadingAnalysis({ sources, progress }) {
   return (
-    <div className="bg-white shadow rounded-2xl p-4 sm:p-6 mt-5">
+    <div
+      className="shadow rounded-2xl p-4 sm:p-6 mt-5 border"
+      style={{
+        backgroundColor: "var(--card-bg)",
+        borderColor: "var(--border-color)",
+        color: "var(--text-primary)",
+      }}
+    >
       {/* TITLE */}
       <div className="text-center mb-8">
         <h2 className="text-lg sm:text-xl font-bold">
           Sedang Menganalisis Berita
         </h2>
 
-        <p className="text-gray-500 text-sm mt-2">
+        <p
+          className="text-sm mt-2"
+          style={{
+            color: "var(--text-secondary)",
+          }}
+        >
           Kami sedang mengambil data dari berbagai sumber terpercaya
         </p>
       </div>

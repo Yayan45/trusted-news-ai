@@ -10,11 +10,13 @@ function SourceItem({ image, title, subtitle, status }) {
               w-7
               h-7
               border-4
-              border-gray-300
-              border-t-blue-500
               rounded-full
               animate-spin
             "
+            style={{
+              borderColor: "var(--border-color)",
+              borderTopColor: "#3b82f6",
+            }}
           />
         );
 
@@ -25,14 +27,20 @@ function SourceItem({ image, title, subtitle, status }) {
         return <FaExclamationCircle className="text-3xl text-red-500" />;
 
       default:
-        return <FaClock className="text-2xl text-gray-400" />;
+        return (
+          <FaClock
+            className="text-2xl"
+            style={{
+              color: "var(--text-secondary)",
+            }}
+          />
+        );
     }
   };
 
   return (
     <div
       className="
-        bg-white
         shadow
         rounded-xl
         p-4
@@ -43,7 +51,13 @@ function SourceItem({ image, title, subtitle, status }) {
         mb-4
         transition-all
         duration-300
+        border
       "
+      style={{
+        backgroundColor: "var(--bg-secondary)",
+        borderColor: "var(--border-color)",
+        color: "var(--text-primary)",
+      }}
     >
       {/* LEFT */}
       <div className="flex items-center gap-4">
@@ -52,7 +66,14 @@ function SourceItem({ image, title, subtitle, status }) {
         <div>
           <h3 className="font-semibold">{title}</h3>
 
-          <p className="text-sm text-gray-500">{subtitle}</p>
+          <p
+            className="text-sm"
+            style={{
+              color: "var(--text-secondary)",
+            }}
+          >
+            {subtitle}
+          </p>
         </div>
       </div>
 

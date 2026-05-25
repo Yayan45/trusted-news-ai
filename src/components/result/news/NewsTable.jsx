@@ -8,20 +8,33 @@ function NewsTable({ news }) {
         <table className="min-w-212.5 w-full mt-3">
           {/* HEAD */}
           <thead>
-            <tr className="bg-gray-100 text-left">
-              <th className="px-4 py-4 text-sm font-semibold rounded-l-xl">
+            <tr
+              style={{
+                backgroundColor: "var(--bg-secondary)",
+                color: "var(--text-primary)",
+              }}
+            >
+              <th className="px-4 py-4 text-sm font-semibold text-left rounded-l-xl">
                 No
               </th>
 
-              <th className="px-4 py-4 text-sm font-semibold">Judul Berita</th>
+              <th className="px-4 py-4 text-sm font-semibold text-left">
+                Judul Berita
+              </th>
 
-              <th className="px-4 py-4 text-sm font-semibold">Sumber</th>
+              <th className="px-4 py-4 text-sm font-semibold text-left">
+                Sumber
+              </th>
 
-              <th className="px-4 py-4 text-sm font-semibold">Similarity</th>
+              <th className="px-4 py-4 text-sm font-semibold text-left">
+                Similarity
+              </th>
 
-              <th className="px-4 py-4 text-sm font-semibold">Status</th>
+              <th className="px-4 py-4 text-sm font-semibold text-left">
+                Status
+              </th>
 
-              <th className="px-4 py-4 text-sm font-semibold rounded-r-xl">
+              <th className="px-4 py-4 text-sm font-semibold text-left rounded-r-xl">
                 Link Ke Artikel Asli
               </th>
             </tr>

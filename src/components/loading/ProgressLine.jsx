@@ -13,7 +13,12 @@ function ProgressLine({ progress }) {
       />
 
       {/* LINE */}
-      <div className="relative w-1 h-32 bg-gray-300">
+      <div
+        className="relative w-1 h-32"
+        style={{
+          backgroundColor: "var(--border-color)",
+        }}
+      >
         {/* ACTIVE LINE */}
         <div
           className="

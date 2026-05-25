@@ -4,10 +4,22 @@ function VerdictSection({ headline, verdict, confidence, theme }) {
   const selectedTheme = themeColor[theme] || themeColor.orange;
 
   return (
-    <div className="border-l border-r border-gray-300 px-5 py-1">
+    <div
+      className="border-l border-r px-5 py-1"
+      style={{
+        borderColor: "var(--border-color)",
+      }}
+    >
       {/* HEADLINE */}
       <div className="mb-8">
-        <p className="text-xs text-gray-500">Headline yang dicek</p>
+        <p
+          className="text-xs"
+          style={{
+            color: "var(--text-secondary)",
+          }}
+        >
+          Headline yang dicek
+        </p>
 
         <h1
           className="
@@ -16,6 +28,9 @@ function VerdictSection({ headline, verdict, confidence, theme }) {
             leading-tight
             mt-1
           "
+          style={{
+            color: "var(--text-primary)",
+          }}
         >
           {headline}
         </h1>
@@ -23,7 +38,14 @@ function VerdictSection({ headline, verdict, confidence, theme }) {
 
       {/* VERDICT */}
       <div>
-        <p className="text-xs uppercase text-gray-500">VERDICT</p>
+        <p
+          className="text-xs uppercase"
+          style={{
+            color: "var(--text-secondary)",
+          }}
+        >
+          VERDICT
+        </p>
 
         <h1
           className="
@@ -41,7 +63,14 @@ function VerdictSection({ headline, verdict, confidence, theme }) {
 
         {/* CONFIDENCE */}
         <div className="flex items-center gap-3 mt-3">
-          <p className="text-sm text-gray-600">Keyakinan</p>
+          <p
+            className="text-sm"
+            style={{
+              color: "var(--text-secondary)",
+            }}
+          >
+            Keyakinan
+          </p>
 
           <div
             className="

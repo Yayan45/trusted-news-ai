@@ -4,7 +4,14 @@ import InterpretationLegend from "./InterpretationLegend";
 
 function TopResultCard({ result }) {
   return (
-    <div className="bg-white shadow rounded-xl px-6 py-5">
+    <div
+      className="shadow rounded-xl px-6 py-5 border"
+      style={{
+        backgroundColor: "var(--card-bg)",
+        borderColor: "var(--border-color)",
+        color: "var(--text-primary)",
+      }}
+    >
       <div
         className="
           grid

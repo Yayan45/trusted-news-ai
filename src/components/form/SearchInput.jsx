@@ -18,6 +18,10 @@ function SearchInput({ value, onChange, placeholder }) {
         text-sm
         sm:text-base
       "
+      style={{
+        backgroundColor: "var(--bg-secondary)",
+        color: "var(--text-primary)",
+      }}
     />
   );
 }

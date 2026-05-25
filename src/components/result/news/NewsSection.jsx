@@ -66,7 +66,14 @@ function NewsSection({ news }) {
   ).length;
 
   return (
-    <div className="bg-white shadow rounded-2xl p-5 mt-6">
+    <div
+      className="shadow rounded-2xl p-5 mt-6 border"
+      style={{
+        backgroundColor: "var(--card-bg)",
+        borderColor: "var(--border-color)",
+        color: "var(--text-primary)",
+      }}
+    >
       {/* HEADER */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-5">
         {/* TITLE + FILTER */}
@@ -92,7 +99,6 @@ function NewsSection({ news }) {
             onChange={(e) => setSortType(e.target.value)}
             className="
               border
-              border-gray-300
               rounded-lg
               px-4
               py-2
@@ -100,6 +106,11 @@ function NewsSection({ news }) {
               outline-none
               min-w-62.5
             "
+            style={{
+              backgroundColor: "var(--bg-secondary)",
+              borderColor: "var(--border-color)",
+              color: "var(--text-primary)",
+            }}
           >
             <option value="highest">Urutkan : Similarity (Tertinggi)</option>
 
