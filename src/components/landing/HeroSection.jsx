@@ -94,7 +94,7 @@ function HeroSection() {
               }}
             >
               <img
-                src="/public/images/hero.png"
+                src="/images/hero.png"
                 alt="Deteksi Hoax AI"
                 className=" w-full h-105 object-cover rounded-2xl "
               />

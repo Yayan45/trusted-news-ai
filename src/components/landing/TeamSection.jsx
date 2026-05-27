@@ -15,7 +15,7 @@ function TeamSection() {
     {
       name: "Yayan Rif'an Awaludin",
       role: "Frontend Developer",
-      image: "/public/images/yayan.jpeg",
+      image: "/images/yayan.jpeg",
       contributions: [
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
