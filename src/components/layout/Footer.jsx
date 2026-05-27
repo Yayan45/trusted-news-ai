@@ -2,83 +2,114 @@ function Footer() {
   return (
     <footer
       className="
-        mt-12
-        bg-white
-        shadow
-        rounded-2xl
-        p-6
+        relative
+        overflow-hidden
+
+        mt-10
+
+        border-t
+
+        px-6
+        py-10
       "
+      style={{
+        borderColor: "var(--border-color)",
+      }}
     >
-      {/* TOP */}
+      {/* BACKGROUND GLOW */}
       <div
         className="
+          absolute
+          left-1/2
+          top-0
+          -translate-x-1/2
+
+          w-75
+          h-75
+
+          rounded-full
+
+          blur-3xl
+
+          opacity-10
+        "
+        style={{
+          background: "linear-gradient(to right, #3B82F6, #06B6D4)",
+        }}
+      />
+
+      {/* CONTENT */}
+      <div
+        className="
+          relative
+          z-10
+
+          max-w-7xl
+          mx-auto
+
           flex
           flex-col
-          lg:flex-row
-          lg:items-start
-          lg:justify-between
-          gap-8
+          md:flex-row
+
+          items-center
+          justify-between
+
+          gap-6
         "
       >
         {/* LEFT */}
-        <div className="max-w-3xl">
-          {/* TITLE */}
-          <h2 className="text-2xl font-bold">
-            AI-Powered Headline Detection and Trusted News Recommendation System
+        <div className="text-center md:text-left">
+          <h2
+            className="
+              text-xl
+              font-bold
+            "
+            style={{
+              color: "var(--text-primary)",
+            }}
+          >
+            Trusted News AI
           </h2>
 
-          {/* DESC */}
-          <p className="text-gray-600 mt-4 leading-relaxed text-sm sm:text-base">
-            Sistem berbasis Artificial Intelligence dan Natural Language
-            Processing (NLP) untuk mendeteksi headline hoax, clickbait, dan
-            berita valid secara realtime. Platform ini membantu pengguna
-            memperoleh informasi terpercaya melalui analisis kredibilitas
-            berita, confidence score, dan rekomendasi artikel dari sumber
-            terpercaya.
+          <p
+            className="
+              mt-2
+
+              text-sm
+              leading-7
+            "
+            style={{
+              color: "var(--text-secondary)",
+            }}
+          >
+            Sistem Deteksi Headline Berita dan Rekomendasi Sumber Berita
+            Terpercaya berbasis Artificial Intelligence.
           </p>
         </div>
 
         {/* RIGHT */}
-        <div>
-          <h3 className="font-bold text-lg mb-3">Project Information</h3>
+        <div className="text-center md:text-right">
+          <p
+            className="text-sm"
+            style={{
+              color: "var(--text-secondary)",
+            }}
+          >
+            © 2026 Trusted News AI
+          </p>
 
-          <div className="space-y-2 text-sm text-gray-600">
-            <p>
-              <span className="font-semibold text-black">Tim:</span> CC26-PSU395
-            </p>
-
-            <p>
-              <span className="font-semibold text-black">Tema:</span>{" "}
-              Sustainable Living & Responsible Consumption
-            </p>
-
-            <p>
-              <span className="font-semibold text-black">Powered by:</span>{" "}
-              Coding Camp 2026 x DBS Foundation
-            </p>
-          </div>
+          <p
+            className="
+              mt-1
+              text-sm
+            "
+            style={{
+              color: "var(--text-secondary)",
+            }}
+          >
+            All Rights Reserved
+          </p>
         </div>
-      </div>
-
-      {/* DIVIDER */}
-      <div className="border-t border-gray-200 my-6" />
-
-      {/* BOTTOM */}
-      <div
-        className="
-          flex
-          flex-col
-          lg:flex-row
-          lg:items-center
-          lg:justify-between
-          gap-3
-          text-sm
-          text-gray-500
-        "
-      >
-        <p>© 2026 AI Hoax Detection System. All rights reserved.</p>
-
-        <p>Developed by Team CC26-PSU395</p>
       </div>
     </footer>
   );
