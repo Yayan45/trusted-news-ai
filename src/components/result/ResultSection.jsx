@@ -7,6 +7,26 @@ import AnalysisGrid from "./ComponentAnalysis/AnalysisGrid";
 import NewsSection from "./news/NewsSection";
 
 function ResultSection({ result }) {
+  // ===============================
+  // SAFE API DATA
+  // ===============================
+
+  const safeResult = {
+    headline: result?.headline || "",
+
+    score: Number(result?.score || 0),
+
+    verdict: result?.verdict || "Tidak Diketahui",
+
+    confidence: result?.confidence || "sedang",
+
+    theme: result?.theme || "blue",
+
+    analysis: result?.analysis || {},
+
+    news: result?.news || [],
+  };
+
   return (
     <motion.div
       className="mt-5"
@@ -23,13 +43,13 @@ function ResultSection({ result }) {
       }}
     >
       {/* TOP RESULT */}
-      <TopResultCard result={result} />
+      <TopResultCard result={safeResult} />
 
       {/* ANALYSIS GRID */}
-      <AnalysisGrid analysis={result.analysis} />
+      <AnalysisGrid analysis={safeResult.analysis} />
 
       {/* NEWS SECTION */}
-      <NewsSection news={result.news} />
+      <NewsSection news={safeResult.news} />
     </motion.div>
   );
 }

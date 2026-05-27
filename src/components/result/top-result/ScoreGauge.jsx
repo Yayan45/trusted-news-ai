@@ -1,16 +1,33 @@
-function ScoreGauge({ score }) {
+function ScoreGauge({ score = 0 }) {
+  // ===============================
+  // NORMALIZE SCORE FROM API
+  // ===============================
+
+  const normalizedScore = Number(score) || 0;
+
+  // ===============================
+  // DYNAMIC COLOR FROM API SCORE
+  // ===============================
+
   const getColor = () => {
-    if (score >= 75) return "#ef4444";
-    if (score >= 55) return "#f97316";
-    if (score >= 40) return "#eab308";
-    if (score >= 20) return "#3b82f6";
+    if (normalizedScore >= 75) return "#ef4444";
+
+    if (normalizedScore >= 55) return "#f97316";
+
+    if (normalizedScore >= 40) return "#eab308";
+
+    if (normalizedScore >= 20) return "#3b82f6";
 
     return "#22c55e";
   };
 
   const color = getColor();
 
-  const angle = (score / 100) * 270;
+  // ===============================
+  // ARC ANGLE
+  // ===============================
+
+  const angle = (normalizedScore / 100) * 270;
 
   return (
     <div className="relative w-44 h-44">
@@ -19,13 +36,13 @@ function ScoreGauge({ score }) {
         className="absolute inset-0 rounded-full"
         style={{
           background: `
-      conic-gradient(
-        from 135deg,
-        ${color} ${angle}deg,
-        var(--border-color) ${angle}deg 270deg,
-        transparent 270deg
-      )
-    `,
+            conic-gradient(
+              from 135deg,
+              ${color} ${angle}deg,
+              var(--border-color) ${angle}deg 270deg,
+              transparent 270deg
+            )
+          `,
         }}
       />
 
@@ -55,7 +72,7 @@ function ScoreGauge({ score }) {
             mb-2
           "
         >
-          {score}%
+          {normalizedScore}%
         </h1>
 
         {/* SMALL LINE */}

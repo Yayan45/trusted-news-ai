@@ -1,5 +1,8 @@
-function SemanticCard({ semanticTags }) {
+function SemanticCard({ semanticTags = [] }) {
+  // ===============================
   // TAG COLOR
+  // ===============================
+
   const getTagColor = (index) => {
     const colors = [
       "bg-red-100 text-red-500",
@@ -11,6 +14,13 @@ function SemanticCard({ semanticTags }) {
 
     return colors[index % colors.length];
   };
+
+  // ===============================
+  // FALLBACK TAG
+  // ===============================
+
+  const safeTags =
+    semanticTags.length > 0 ? semanticTags : ["Tidak Ada Analisis"];
 
   return (
     <div
@@ -38,7 +48,7 @@ function SemanticCard({ semanticTags }) {
 
           {/* TAGS */}
           <div className="flex flex-wrap gap-2">
-            {semanticTags.map((tag, index) => (
+            {safeTags.map((tag, index) => (
               <div
                 key={index}
                 className={`

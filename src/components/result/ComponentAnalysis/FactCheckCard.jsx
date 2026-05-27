@@ -1,7 +1,15 @@
 import { IoWarningOutline } from "react-icons/io5";
+
 import { MdVerified } from "react-icons/md";
 
 function FactCheckCard({ factCheck }) {
+  // ===============================
+  // DETECT OFFICIAL FACT CHECK
+  // ===============================
+
+  const hasOfficialFactCheck =
+    factCheck && factCheck !== "Tidak ada cek fakta resmi ditemukan";
+
   return (
     <div
       className="shadow rounded-xl p-5 border"
@@ -28,7 +36,7 @@ function FactCheckCard({ factCheck }) {
 
           {/* STATUS */}
           <div className="flex items-center gap-2 mt-2">
-            {factCheck ? (
+            {hasOfficialFactCheck ? (
               <>
                 {/* VERIFIED */}
                 <MdVerified className="text-green-500 text-lg shrink-0" />
@@ -39,7 +47,7 @@ function FactCheckCard({ factCheck }) {
                     color: "var(--text-secondary)",
                   }}
                 >
-                  Terdapat verifikasi dari sumber resmi
+                  {factCheck}
                 </p>
               </>
             ) : (

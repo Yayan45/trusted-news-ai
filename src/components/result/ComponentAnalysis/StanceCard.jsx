@@ -1,11 +1,25 @@
-function StanceCard({ support, against }) {
+function StanceCard({ support = 0, against = 0 }) {
+  // ===============================
+  // NORMALIZE API DATA
+  // ===============================
+
+  const supportCount = Number(support) || 0;
+
+  const againstCount = Number(against) || 0;
+
+  // ===============================
   // TOTAL
-  const total = support + against;
+  // ===============================
 
+  const total = supportCount + againstCount;
+
+  // ===============================
   // PERCENTAGE
-  const supportPercentage = total > 0 ? (support / total) * 100 : 0;
+  // ===============================
 
-  const againstPercentage = total > 0 ? (against / total) * 100 : 0;
+  const supportPercentage = total > 0 ? (supportCount / total) * 100 : 0;
+
+  const againstPercentage = total > 0 ? (againstCount / total) * 100 : 0;
 
   return (
     <div
@@ -59,7 +73,7 @@ function StanceCard({ support, against }) {
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 bg-red-500 rounded-full" />
 
-          <p>{against} Membantah</p>
+          <p>{againstCount} Membantah</p>
         </div>
 
         <p
@@ -74,7 +88,7 @@ function StanceCard({ support, against }) {
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 bg-green-500 rounded-full" />
 
-          <p>{support} Mendukung</p>
+          <p>{supportCount} Mendukung</p>
         </div>
       </div>
     </div>

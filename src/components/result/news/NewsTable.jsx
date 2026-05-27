@@ -1,6 +1,12 @@
 import NewsRow from "./NewsRow";
 
-function NewsTable({ news }) {
+function NewsTable({ news = [] }) {
+  // ===============================
+  // EMPTY STATE
+  // ===============================
+
+  const isEmpty = !news || news.length === 0;
+
   return (
     <div>
       {/* TABLE CONTAINER */}
@@ -42,9 +48,36 @@ function NewsTable({ news }) {
 
           {/* BODY */}
           <tbody>
-            {news.map((item, index) => (
-              <NewsRow key={index} item={item} index={index} />
-            ))}
+            {isEmpty ? (
+              <tr>
+                <td
+                  colSpan={6}
+                  className="py-14 text-center"
+                  style={{
+                    color: "var(--text-secondary)",
+                  }}
+                >
+                  <div className="flex flex-col items-center justify-center">
+                    {/* ICON */}
+                    <div className="text-5xl mb-4 opacity-60">📰</div>
+
+                    {/* TITLE */}
+                    <h2
+                      className="text-lg font-semibold"
+                      style={{
+                        color: "var(--text-primary)",
+                      }}
+                    >
+                      Tidak ada berita ditemukan
+                    </h2>
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              news.map((item, index) => (
+                <NewsRow key={index} item={item} index={index} />
+              ))
+            )}
           </tbody>
         </table>
       </div>

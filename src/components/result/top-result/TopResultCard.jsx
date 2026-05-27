@@ -1,8 +1,26 @@
 import ScoreGauge from "./ScoreGauge";
+
 import VerdictSection from "./VerdictSection";
+
 import InterpretationLegend from "./InterpretationLegend";
 
 function TopResultCard({ result }) {
+  // ===============================
+  // SAFE FALLBACK FROM API
+  // ===============================
+
+  const safeResult = {
+    headline: result?.headline || "-",
+
+    score: Number(result?.score || 0),
+
+    verdict: result?.verdict || "Tidak Diketahui",
+
+    confidence: result?.confidence || "sedang",
+
+    theme: result?.theme || "blue",
+  };
+
   return (
     <div
       className="shadow rounded-xl px-6 py-5 border"
@@ -23,15 +41,15 @@ function TopResultCard({ result }) {
       >
         {/* LEFT */}
         <div className="flex justify-center">
-          <ScoreGauge score={result.score} />
+          <ScoreGauge score={safeResult.score} />
         </div>
 
         {/* CENTER */}
         <VerdictSection
-          headline={result.headline}
-          verdict={result.verdict}
-          confidence={result.confidence}
-          theme={result.theme}
+          headline={safeResult.headline}
+          verdict={safeResult.verdict}
+          confidence={safeResult.confidence}
+          theme={safeResult.theme}
         />
 
         {/* RIGHT */}

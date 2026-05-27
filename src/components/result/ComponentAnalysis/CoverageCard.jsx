@@ -1,4 +1,4 @@
-function CoverageCard({ coverage }) {
+function CoverageCard({ coverage = 0 }) {
   return (
     <div
       className="shadow rounded-2xl p-5 border"

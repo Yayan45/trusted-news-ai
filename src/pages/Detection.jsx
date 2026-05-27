@@ -4,6 +4,8 @@ import toast from "react-hot-toast";
 
 import { FaShieldAlt } from "react-icons/fa";
 
+import API from "../services/api";
+
 import DetectionNavbar from "../components/layout/DetectionNavbar";
 
 import SearchForm from "../components/form/SearchForm";
@@ -15,8 +17,8 @@ import ResultSection from "../components/result/ResultSection";
 
 import ErrorState from "../components/common/ErrorState";
 
-import { resultDummy } from "../data/resultDummy";
 import { initialSources } from "../data/sourceDummy";
+import { mapApiResult } from "../utils/mapApiResult";
 
 function Detection() {
   // =========================
@@ -36,62 +38,62 @@ function Detection() {
   // HANDLE SEARCH
   // =========================
   const handleSearch = async (headline) => {
-    // VALIDATION
+    // VALIDASI
     if (!headline.trim()) {
       toast.error("Headline tidak boleh kosong");
 
       return;
     }
 
-    // RESET
-    setResult(null);
+    try {
+      // RESET
+      setLoading(true);
 
-    setError(null);
+      setResult(null);
 
-    setLoading(true);
+      setError(null);
 
-    setSources(initialSources);
+      setSources(initialSources);
 
-    setProgress(0);
+      setProgress(0);
 
-    toast.success("Memulai analisis berita...");
+      toast.loading("AI sedang menganalisis berita...", {
+        id: "loading",
+      });
 
-    // ERROR SIMULATION
-    if (headline.toLowerCase().includes("error")) {
-      setTimeout(() => {
-        setLoading(false);
-
-        setError("Gagal mengambil data berita dari server");
-
-        toast.error("Terjadi kesalahan saat analisis");
-      }, 2500);
-
-      return;
-    }
-
-    // GOOGLE LOADING
-    setTimeout(() => {
+      // =========================
+      // LOADING UI STEP 1
+      // =========================
       setProgress(1);
 
       setSources([
         {
           image: "/google.png",
           title: "Google Search",
-          subtitle: "Sedang mengambil artikel...",
+          subtitle: "Mengambil artikel terkait...",
           status: "loading",
         },
 
         {
           image: "/duckduckgo.png",
           title: "DuckDuckGo Search",
-          subtitle: "Menunggu proses scraping",
+          subtitle: "Menunggu proses scraping...",
           status: "waiting",
         },
       ]);
-    }, 1000);
 
-    // GOOGLE SUCCESS
-    setTimeout(() => {
+      // =========================
+      // REQUEST BACKEND
+      // =========================
+      const response = await API.post("/check", {
+        headline,
+      });
+
+      console.log("RESPONSE BACKEND:", response.data);
+
+      // =========================
+      // LOADING UI STEP 2
+      // =========================
       setProgress(2);
 
       setSources([
@@ -105,39 +107,45 @@ function Detection() {
         {
           image: "/duckduckgo.png",
           title: "DuckDuckGo Search",
-          subtitle: "Sedang mengambil artikel...",
-          status: "loading",
-        },
-      ]);
-    }, 3000);
-
-    // ALL SUCCESS
-    setTimeout(() => {
-      setSources([
-        {
-          image: "/google.png",
-          title: "Google Search",
-          subtitle: "Artikel berhasil ditemukan",
-          status: "success",
-        },
-
-        {
-          image: "/duckduckgo.png",
-          title: "DuckDuckGo Search",
           subtitle: "Artikel berhasil ditemukan",
           status: "success",
         },
       ]);
-    }, 5000);
 
-    // SHOW RESULT
-    setTimeout(() => {
+      const resultAI = response.data.data;
+
+      // =========================
+      // MAP API → UI FORMAT
+      // =========================
+
+      const mappedResult = mapApiResult(headline, resultAI);
+
+      console.log("MAPPED RESULT:", mappedResult);
+
+      // =========================
+      // SET RESULT
+      // =========================
+
+      setResult(mappedResult);
+
+      toast.success("Analisis berhasil dilakukan", {
+        id: "loading",
+      });
+    } catch (error) {
+      console.error(error);
+
+      // ERROR BACKEND
+      const errorMessage =
+        error.response?.data?.message || "Server backend / AI tidak merespon";
+
+      setError(errorMessage);
+
+      toast.error(errorMessage, {
+        id: "loading",
+      });
+    } finally {
       setLoading(false);
-
-      setResult(resultDummy);
-
-      toast.success("Analisis berhasil dilakukan");
-    }, 6500);
+    }
   };
 
   return (
@@ -223,7 +231,8 @@ function Detection() {
               color: "var(--text-secondary)",
             }}
           >
-            Masukkan headline berita untuk dianalisis
+            Masukkan headline berita untuk dianalisis menggunakan Artificial
+            Intelligence dan Natural Language Processing.
           </p>
         </div>
 

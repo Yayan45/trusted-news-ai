@@ -1,7 +1,11 @@
 import { themeColor } from "../../../utils/theme";
 
 function VerdictSection({ headline, verdict, confidence, theme }) {
-  const selectedTheme = themeColor[theme] || themeColor.orange;
+  // ===============================
+  // FALLBACK THEME
+  // ===============================
+
+  const selectedTheme = themeColor[theme] || themeColor.blue;
 
   return (
     <div
