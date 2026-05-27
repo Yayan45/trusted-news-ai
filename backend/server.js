@@ -15,3 +15,6 @@ app.use("/api", apiRoutes);
 app.listen(PORT, () => {
   console.log(`Server Back-End berjalan di http://localhost:${PORT}`);
 });
+
+// TAMBAHAN WAJIB UNTUK VERCEL SERVERLESS (JANGAN DIHAPUS)
+module.exports = app;
