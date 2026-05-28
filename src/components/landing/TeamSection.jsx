@@ -3,73 +3,35 @@ function TeamSection() {
     {
       name: "ALVIN GRAND PUTRA",
       role: "Backend Developer",
-      image: "/team/member1.png",
-      contributions: [
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-      ],
-    },
-
-    {
-      name: "Yayan Rif'an Awaludin",
-      role: "Frontend Developer",
-      image: "/images/yayan.jpeg",
-      contributions: [
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-      ],
+      image: "/images/alvin.png",
     },
 
     {
       name: "Johana Oktavia Ramadhani",
       role: "Data Scientist",
-      image: "/team/member3.png",
-      contributions: [
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-      ],
+      image: "/images/johana.png",
     },
 
     {
-      name: "Desvita Maharani",
-      role: "Data Scientist",
-      image: "/team/member4.png",
-      contributions: [
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-      ],
+      name: "Yayan Rif'an Awaludin",
+      role: "Frontend Developer",
+      image: "/images/yayan.png",
     },
 
     {
       name: "Anugrah Syahputra Sibarani",
       role: "AI Engineer",
-      image: "/team/member5.png",
-      contributions: [
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-      ],
+      image: "/images/anugrah.png",
     },
-
+    {
+      name: "Desvita Maharani",
+      role: "Data Scientist",
+      image: "/images/rani.png",
+    },
     {
       name: "Raden Fitzal Bintang Nugraha Wiradikoesoema",
       role: "AI Engineer",
-      image: "/team/member6.png",
-      contributions: [
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-      ],
+      image: "/images/raden.png",
     },
   ];
 
@@ -283,48 +245,6 @@ function TeamSection() {
                 >
                   {team.name}
                 </h2>
-
-                {/* CONTRIBUTIONS */}
-                <div className="mt-5 space-y-3">
-                  {team.contributions.map((item, i) => (
-                    <div
-                      key={i}
-                      className="
-                        flex
-                        items-start
-                        gap-3
-                      "
-                    >
-                      <div
-                        className="
-                          w-2
-                          h-2
-
-                          rounded-full
-
-                          mt-2
-                          shrink-0
-                        "
-                        style={{
-                          background:
-                            "linear-gradient(to right, #3B82F6, #06B6D4)",
-                        }}
-                      />
-
-                      <p
-                        className="
-                          text-sm
-                          leading-7
-                        "
-                        style={{
-                          color: "var(--text-secondary)",
-                        }}
-                      >
-                        {item}
-                      </p>
-                    </div>
-                  ))}
-                </div>
 
                 {/* LINE */}
                 <div
