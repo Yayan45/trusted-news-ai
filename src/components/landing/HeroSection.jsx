@@ -38,7 +38,7 @@ function HeroSection() {
           </h1>
           {/* SUBTITLE */}
           <p
-            className=" mt-6 text-lg sm:text-xl leading-relaxed max-w-2xl "
+            className=" mt-6 text-lg sm:text-xl leading-relaxed max-w-2xl text-justify"
             style={{ color: "var(--text-secondary)" }}
           >
             Sistem berbasis Natural Language Processing dan Deep Learning untuk

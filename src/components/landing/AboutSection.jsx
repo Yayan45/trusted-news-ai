@@ -125,11 +125,10 @@ function AboutSection() {
             <p
               className="
                 mt-8
-
                 text-base
                 sm:text-lg
-
                 leading-8
+                text-justify
               "
               style={{
                 color: "var(--text-secondary)",
@@ -149,7 +148,7 @@ function AboutSection() {
 
                 text-base
                 sm:text-lg
-
+              text-justify
                 leading-8
               "
               style={{
@@ -306,7 +305,7 @@ function AboutSection() {
                   <p
                     className="
                       mt-4
-
+                      text-justify
                       text-base
                       leading-8
                     "

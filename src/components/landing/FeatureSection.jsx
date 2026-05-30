@@ -146,7 +146,7 @@ function FeatureSection() {
               mx-auto
 
               mt-6
-
+            
               text-base
               sm:text-lg
 
@@ -156,10 +156,9 @@ function FeatureSection() {
               color: "var(--text-secondary)",
             }}
           >
-            Trusted News AI memanfaatkan teknologi berbasis Artificial
-            Intelligence, Natural Language Processing, scraping berita, dan Deep
-            Learning untuk membantu proses analisis headline berita secara
-            otomatis dan real-time.
+            Trusted News AI didukung berbagai teknologi AI, NLP, scraping
+            berita, dan Deep Learning untuk melakukan analisis serta verifikasi
+            berita secara otomatis.
           </p>
         </div>
 

@@ -164,10 +164,9 @@ function HowItWorksSection() {
               color: "var(--text-secondary)",
             }}
           >
-            Trusted News AI menggunakan kombinasi Artificial Intelligence,
-            Natural Language Processing, scraping berita, dan cosine similarity
-            analysis untuk membantu proses verifikasi berita digital secara
-            otomatis dan real-time.
+            Sistem bekerja dengan mengumpulkan artikel terkait, menganalisis
+            informasi, lalu menampilkan hasil verifikasi dan rekomendasi sumber
+            berita terpercaya.
           </p>
         </div>
 
@@ -328,7 +327,7 @@ function HowItWorksSection() {
                       <p
                         className="
                           mt-6
-
+                          text-justify
                           text-base
                           sm:text-lg
 
