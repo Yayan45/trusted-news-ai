@@ -14,19 +14,17 @@ function FeatureSection() {
     },
 
     {
-      icon: <FaBrain />,
-      title: "Stance Detection",
-      description:
-        "Model AI menganalisis apakah artikel mendukung atau membantah headline berita menggunakan dataset stance classification.",
-    },
-
-    {
       icon: <MdOutlineAnalytics />,
       title: "Clickbait Detection",
       description:
         "Sistem mendeteksi indikasi clickbait pada artikel untuk mengurangi penyebaran informasi provokatif dan manipulatif.",
     },
-
+    {
+      icon: <FaBrain />,
+      title: "Stance Detection",
+      description:
+        "Model AI menganalisis apakah artikel mendukung atau membantah headline berita menggunakan dataset stance classification.",
+    },
     {
       icon: <FaShieldAlt />,
       title: "Trusted Domain Check",

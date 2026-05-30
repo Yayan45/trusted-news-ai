@@ -25,19 +25,17 @@ function HowItWorksSection() {
     },
 
     {
-      icon: <FaBrain />,
-      title: "Stance Detection",
-      description:
-        "Model AI menganalisis apakah artikel yang ditemukan mendukung atau membantah headline berita menggunakan pendekatan Natural Language Processing.",
-    },
-
-    {
       icon: <MdOutlineAnalytics />,
       title: "Clickbait Detection",
       description:
         "Sistem mendeteksi indikasi clickbait dan pola bahasa provokatif untuk mengurangi artikel yang berpotensi menyebarkan informasi manipulatif.",
     },
-
+    {
+      icon: <FaBrain />,
+      title: "Stance Detection",
+      description:
+        "Model AI menganalisis apakah artikel yang ditemukan mendukung atau membantah headline berita menggunakan pendekatan Natural Language Processing.",
+    },
     {
       icon: <FaShieldAlt />,
       title: "Trusted Domain & Similarity",

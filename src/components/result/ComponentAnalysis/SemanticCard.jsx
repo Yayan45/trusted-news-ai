@@ -1,27 +1,4 @@
-function SemanticCard({ semanticTags = [] }) {
-  // ===============================
-  // TAG COLOR
-  // ===============================
-
-  const getTagColor = (index) => {
-    const colors = [
-      "bg-red-100 text-red-500",
-      "bg-green-100 text-green-600",
-      "bg-purple-100 text-purple-600",
-      "bg-blue-100 text-blue-600",
-      "bg-orange-100 text-orange-500",
-    ];
-
-    return colors[index % colors.length];
-  };
-
-  // ===============================
-  // FALLBACK TAG
-  // ===============================
-
-  const safeTags =
-    semanticTags.length > 0 ? semanticTags : ["Tidak Ada Analisis"];
-
+function SemanticCard() {
   return (
     <div
       className="shadow rounded-2xl p-5 border"
@@ -46,24 +23,43 @@ function SemanticCard({ semanticTags = [] }) {
             Analisis Semantik & Gaya Bahasa
           </h3>
 
-          {/* TAGS */}
-          <div className="flex flex-wrap gap-2">
-            {safeTags.map((tag, index) => (
-              <div
-                key={index}
-                className={`
-                  px-3
-                  py-1
-                  rounded-md
-                  text-sm
-                  font-medium
-                  ${getTagColor(index)}
-                `}
-              >
-                {tag}
-              </div>
-            ))}
+          {/* BADGE */}
+          <div
+            className="
+              inline-flex
+              items-center
+
+              px-3
+              py-1
+
+              rounded-full
+
+              text-sm
+              font-semibold
+
+              mb-4
+            "
+            style={{
+              backgroundColor: "rgba(251,191,36,0.15)",
+              color: "#f59e0b",
+            }}
+          >
+            🚧 Upcoming Feature
           </div>
+
+          {/* DESCRIPTION */}
+          <p
+            className="text-sm leading-7"
+            style={{
+              color: "var(--text-secondary)",
+            }}
+          >
+            Fitur analisis semantik digunakan untuk mendeteksi pola bahasa,
+            narasi provokatif, clickbait, serta karakteristik teks berita
+            menggunakan teknologi Natural Language Processing (NLP). Fitur ini
+            masih dalam tahap pengembangan dan akan tersedia pada versi
+            berikutnya.
+          </p>
         </div>
       </div>
     </div>
