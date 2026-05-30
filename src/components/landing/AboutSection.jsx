@@ -155,7 +155,7 @@ function AboutSection() {
                 color: "var(--text-secondary)",
               }}
             >
-              Sistem melakukan proses clickbait detection,stance detection,
+              Sistem melakukan proses clickbait detection, stance detection,
               cosine similarity analysis, serta trusted domain verification
               untuk membantu menentukan tingkat kredibilitas berita secara lebih
               akurat.
