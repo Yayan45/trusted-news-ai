@@ -46,7 +46,7 @@ function ResultSection({ result }) {
       <TopResultCard result={safeResult} />
 
       {/* ANALYSIS GRID */}
-      <AnalysisGrid analysis={safeResult.analysis} />
+      <AnalysisGrid analysis={safeResult.analysis} news={safeResult.news} />
 
       {/* NEWS SECTION */}
       <NewsSection news={safeResult.news} />

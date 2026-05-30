@@ -1,21 +1,14 @@
 import StanceCard from "./StanceCard";
-
 import FactCheckCard from "./FactCheckCard";
-
 import SemanticCard from "./SemanticCard";
-
 import CoverageCard from "./CoverageCard";
 
-function AnalysisGrid({ analysis }) {
+function AnalysisGrid({ analysis, news }) {
   // ===============================
   // SAFE DATA FROM API
   // ===============================
 
   const safeAnalysis = {
-    support: Number(analysis?.support || 0),
-
-    against: Number(analysis?.against || 0),
-
     factCheck: analysis?.factCheck || "",
 
     semanticTags: analysis?.semanticTags || [],
@@ -37,10 +30,8 @@ function AnalysisGrid({ analysis }) {
 
       {/* GRID */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <StanceCard
-          support={safeAnalysis.support}
-          against={safeAnalysis.against}
-        />
+        {/* STANCE DARI BERITA_TERKAIT */}
+        <StanceCard news={news} />
 
         <FactCheckCard factCheck={safeAnalysis.factCheck} />
 

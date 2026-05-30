@@ -28,7 +28,9 @@ function NewsRow({ item, index }) {
       </td>
 
       {/* SIMILARITY */}
-      <td className="px-4 py-5 text-sm font-medium">{item.similarity}%</td>
+      <td className="px-4 py-5 text-sm font-medium">
+        {Number(item.similarity).toFixed(2)}%
+      </td>
 
       {/* STATUS */}
       <td className="px-4 py-5">

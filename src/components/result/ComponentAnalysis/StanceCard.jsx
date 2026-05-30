@@ -1,11 +1,15 @@
-function StanceCard({ support = 0, against = 0 }) {
+function StanceCard({ news = [] }) {
   // ===============================
-  // NORMALIZE API DATA
+  // HITUNG DARI BERITA_TERKAIT
   // ===============================
 
-  const supportCount = Number(support) || 0;
+  const supportCount = news.filter(
+    (item) => item.status === "Mendukung",
+  ).length;
 
-  const againstCount = Number(against) || 0;
+  const againstCount = news.filter(
+    (item) => item.status === "Membantah",
+  ).length;
 
   // ===============================
   // TOTAL
@@ -31,9 +35,7 @@ function StanceCard({ support = 0, against = 0 }) {
       }}
     >
       {/* TITLE */}
-      <h3 className="font-bold text-lg mb-4">
-        Rasio Konfirmasi - Media (Stance Bar)
-      </h3>
+      <h3 className="font-bold text-lg mb-4">Rasio Konfirmasi Media</h3>
 
       {/* BAR */}
       <div
@@ -42,7 +44,7 @@ function StanceCard({ support = 0, against = 0 }) {
           backgroundColor: "var(--border-color)",
         }}
       >
-        {/* AGAINST */}
+        {/* MEMBANTAH */}
         <div
           className="
             bg-red-500
@@ -54,7 +56,7 @@ function StanceCard({ support = 0, against = 0 }) {
           }}
         />
 
-        {/* SUPPORT */}
+        {/* MENDUKUNG */}
         <div
           className="
             bg-green-500
@@ -69,7 +71,7 @@ function StanceCard({ support = 0, against = 0 }) {
 
       {/* INFO */}
       <div className="flex items-center gap-6 mt-4 text-sm flex-wrap">
-        {/* AGAINST */}
+        {/* MEMBANTAH */}
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 bg-red-500 rounded-full" />
 
@@ -84,7 +86,7 @@ function StanceCard({ support = 0, against = 0 }) {
           ||
         </p>
 
-        {/* SUPPORT */}
+        {/* MENDUKUNG */}
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 bg-green-500 rounded-full" />
 

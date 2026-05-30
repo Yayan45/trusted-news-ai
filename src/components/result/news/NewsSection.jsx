@@ -120,7 +120,7 @@ function NewsSection({ news }) {
       </div>
 
       {/* TABLE */}
-      <NewsTable news={paginatedNews} />
+      <NewsTable news={paginatedNews} startIndex={startIndex} />
 
       {/* PAGINATION */}
       <Pagination

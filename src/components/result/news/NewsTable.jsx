@@ -1,6 +1,6 @@
 import NewsRow from "./NewsRow";
 
-function NewsTable({ news = [] }) {
+function NewsTable({ news = [], startIndex = 0 }) {
   // ===============================
   // EMPTY STATE
   // ===============================
@@ -58,10 +58,8 @@ function NewsTable({ news = [] }) {
                   }}
                 >
                   <div className="flex flex-col items-center justify-center">
-                    {/* ICON */}
                     <div className="text-5xl mb-4 opacity-60">📰</div>
 
-                    {/* TITLE */}
                     <h2
                       className="text-lg font-semibold"
                       style={{
@@ -75,7 +73,11 @@ function NewsTable({ news = [] }) {
               </tr>
             ) : (
               news.map((item, index) => (
-                <NewsRow key={index} item={item} index={index} />
+                <NewsRow
+                  key={item.id || index}
+                  item={item}
+                  index={startIndex + index}
+                />
               ))
             )}
           </tbody>
