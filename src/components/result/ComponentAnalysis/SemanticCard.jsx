@@ -55,7 +55,7 @@ function SemanticCard() {
             }}
           >
             Fitur analisis semantik digunakan untuk mendeteksi pola bahasa,
-            narasi provokatif, clickbait,Fitur ini masih dalam tahap
+            narasi provokatif, clickbait, Fitur ini masih dalam tahap
             pengembangan dan akan tersedia pada versi berikutnya.
           </p>
         </div>
